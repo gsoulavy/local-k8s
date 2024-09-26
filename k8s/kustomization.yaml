@@ -10,5 +10,8 @@ resources:
   - storage/redis-pvc.yaml
   - deployment/redis-deploy.yaml
   - service/redis-svc.yaml
+  - storage/mssql-pvc.yaml
+  - deployment/mssql-deploy.yaml
+  - service/mssql-svc.yaml
 
 # You can add more configurations here as needed
