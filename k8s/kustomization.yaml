@@ -3,7 +3,6 @@ kind: Kustomization
 
 resources:
   - namespace/data-ns.yaml
-  - namespace/local-stack-ns.yaml
   - storage/mongo-pvc.yaml
   - deployment/mongo-deploy.yaml
   - service/mongo-svc.yaml
