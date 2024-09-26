@@ -30,9 +30,13 @@ spec:
               value: "Y"
             - name: MSSQL_SA_PASSWORD
               value: "P@ssw0rd"
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "2Gi"
+            limits:
+              cpu: "1"
+              memory: "4Gi"
           volumeMounts:
             - name: mssql-data
               mountPath: /var/opt/mssql
-
-      
-  

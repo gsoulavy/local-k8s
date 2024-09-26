@@ -2,19 +2,19 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - namespace/data-ns.yaml
-  - storage/mongo-pvc.yaml
-  - deployment/mongo-deploy.yaml
-  - service/mongo-svc.yaml
-  - storage/redis-pvc.yaml
-  - deployment/redis-deploy.yaml
-  - service/redis-svc.yaml
-  - storage/mssql-pvc.yaml
-  - deployment/mssql-deploy.yaml
-  - service/mssql-svc.yaml
-  - storage/azurite-pvc.yaml
-  - deployment/azurite-deploy.yaml
-  - service/azurite-svc.yaml
-  - storage/rabbitmq-pvc.yaml
-  - deployment/rabbitmq-deploy.yaml
-  - service/rabbitmq-svc.yaml
+  - namespace/data.yaml
+  - storage/mongo.yaml
+  - deployment/mongo.yaml
+  - service/mongo.yaml
+  - storage/redis.yaml
+  - deployment/redis.yaml
+  - service/redis.yaml
+  - storage/mssql.yaml
+  - deployment/mssql.yaml
+  - service/mssql.yaml
+  - storage/azurite.yaml
+  - deployment/azurite.yaml
+  - service/azurite.yaml
+  - storage/rabbitmq.yaml
+  - deployment/rabbitmq.yaml
+  - service/rabbitmq.yaml
