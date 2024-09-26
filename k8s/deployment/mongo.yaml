@@ -19,10 +19,19 @@ spec:
         - name: mongo-data
           persistentVolumeClaim:
             claimName: mongo-pvc
+      initContainers:
+        - name: init-mongo
+          image: busybox
+          command:
+            - sh
+            - -c
+            - 'rm -f /data/db/mongod.lock'
+          volumeMounts:
+            - name: mongo-data
+              mountPath: /data/db
       containers:
         - name: mongodb
           image: mongo
-          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 27017
           env:
@@ -30,6 +39,13 @@ spec:
               value: "admin"
             - name: MONGO_INITDB_ROOT_PASSWORD
               value: "p@ssw0rd!"
+          resources:
+            limits:
+              cpu: "1"
+              memory: "1Gi"
+            requests:
+              cpu: "500m"
+              memory: "512Mi"
           volumeMounts:
             - name: mongo-data
               mountPath: /data/db

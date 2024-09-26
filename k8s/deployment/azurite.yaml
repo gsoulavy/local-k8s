@@ -18,14 +18,13 @@ spec:
           image: mcr.microsoft.com/azure-storage/azurite
           args:
             - azurite
-            - -l
-            - /data
-            - --blobHost
-            - 0.0.0.0
-            - --queueHost
-            - 0.0.0.0
-            - --tableHost
-            - 0.0.0.0
+          resources:
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+            requests:
+              cpu: "250m"
+              memory: "256Mi"
           ports:
             - containerPort: 10000
               name: blob
