@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: azurite
+  namespace: data
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: azurite
+  template:
+    metadata:
+      labels:
+        app: azurite
+    spec:
+      containers:
+        - name: azurite
+          image: mcr.microsoft.com/azure-storage/azurite
+          args:
+            - azurite
+            - -l
+            - /data
+            - --blobHost
+            - 0.0.0.0
+            - --queueHost
+            - 0.0.0.0
+            - --tableHost
+            - 0.0.0.0
+          ports:
+            - containerPort: 10000
+              name: blob
+            - containerPort: 10001
+              name: queue
+            - containerPort: 10002
+              name: table
+          volumeMounts:
+            - name: azurite-pvc
+              mountPath: /data
+      volumes:
+        - name: azurite-pvc
+          persistentVolumeClaim:
+            claimName: azurite-pvc

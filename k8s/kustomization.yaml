@@ -13,5 +13,8 @@ resources:
   - storage/mssql-pvc.yaml
   - deployment/mssql-deploy.yaml
   - service/mssql-svc.yaml
+  - storage/azurite-pvc.yaml
+  - deployment/azurite-deploy.yaml
+  - service/azurite-svc.yaml
 
 # You can add more configurations here as needed
