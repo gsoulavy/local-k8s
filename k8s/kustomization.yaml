@@ -16,5 +16,8 @@ resources:
   - storage/azurite-pvc.yaml
   - deployment/azurite-deploy.yaml
   - service/azurite-svc.yaml
+  - storage/rabbitmq-pvc.yaml
+  - deployment/rabbitmq-deploy.yaml
+  - service/rabbitmq-svc.yaml
 
 # You can add more configurations here as needed

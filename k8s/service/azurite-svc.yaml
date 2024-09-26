@@ -12,11 +12,14 @@ spec:
       port: 10000
       targetPort: 10000
       nodePort: 32000 # NodePort for blob
+      name: blob
     - protocol: TCP
       port: 10001
       targetPort: 10001
       nodePort: 32001 # NodePort for queue
+      name: queue
     - protocol: TCP
       port: 10002
       targetPort: 10002
       nodePort: 32002 # NodePort for table
+      name: table

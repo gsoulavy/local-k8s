@@ -10,6 +10,7 @@ The following services are included in this setup:
 - Redis
 - Microsoft SQL Server (MSSQL)
 - Azurite (Azure Storage Emulator)
+- RabbitMQ
 
 ## Directory Structure
 
@@ -27,7 +28,10 @@ The following services are included in this setup:
     ├── mssql/
     │   ├── deployment.yaml
     │   └── service.yaml
-    └── azurite/
+    ├── azurite/
+    │   ├── deployment.yaml
+    │   └── service.yaml
+    └── rabbitmq/
         ├── deployment.yaml
         └── service.yaml
 ```
@@ -52,13 +56,18 @@ After deploying the services, you can access them using the following connection
 
 - MongoDB: `mongodb://admin:password@localhost:30017`
   - Username: `admin`
-  - Password: `password`
+  - Password: `p@ssw0rd`
 - Redis: `redis://localhost:30379`
-- MSSQL: `Server=localhost,30433;User Id=sa;Password=YourStrong!Passw0rd;`
+- MSSQL: `Server=localhost,30433;User Id=sa;Password=P@ssw0rd;`
 - Azurite:
   - Blob: `http://localhost:31000`
   - Queue: `http://localhost:31001`
   - Table: `http://localhost:31002`
+- RabbitMQ:
+  - AMQP: `amqp://localhost:30672`
+  - Management UI: `http://localhost:31672`
+  - Username: `admin`
+  - Password: `p@ssw0rd`
 
 Note: These services are exposed using NodePort services. Make sure your local Kubernetes cluster allows access to these NodePorts.
 
