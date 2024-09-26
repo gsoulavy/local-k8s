@@ -42,8 +42,8 @@ The following services are included in this setup:
 2. Make sure you have `kubectl` installed and configured to use your local cluster.
 3. Clone this repository:
    ```
-   git clone https://github.com/yourusername/kubernetes-dev-environment.git
-   cd kubernetes-dev-environment
+   git clone https://github.com/gsoulavy/local-k8s.git
+   cd local-k8s
    ```
 4. Apply the Kubernetes manifests using Kustomize:
    ```
