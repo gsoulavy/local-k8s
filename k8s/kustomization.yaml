@@ -7,5 +7,8 @@ resources:
   - storage/mongo-pvc.yaml
   - deployment/mongo-deploy.yaml
   - service/mongo-svc.yaml
+  - storage/redis-pvc.yaml
+  - deployment/redis-deploy.yaml
+  - service/redis-svc.yaml
 
 # You can add more configurations here as needed
