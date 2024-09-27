@@ -1,6 +1,6 @@
 # Kubernetes Development Environment
 
-This repository contains Kubernetes manifests for setting up a local development environment with various data services using Kustomize.
+This repository contains Kubernetes manifests for setting up a local development environment with various data services and monitoring using Kustomize.
 
 ## Services
 
@@ -11,6 +11,7 @@ The following services are included in this setup:
 - Microsoft SQL Server (MSSQL)
 - Azurite (Azure Storage Emulator)
 - RabbitMQ
+- Prometheus (Monitoring)
 
 ## Directory Structure
 
@@ -19,21 +20,32 @@ The following services are included in this setup:
 ├── README.md
 └── k8s/
     ├── kustomization.yaml
-    ├── mongodb/
-    │   ├── deployment.yaml
-    │   └── service.yaml
-    ├── redis/
-    │   ├── deployment.yaml
-    │   └── service.yaml
-    ├── mssql/
-    │   ├── deployment.yaml
-    │   └── service.yaml
-    ├── azurite/
-    │   ├── deployment.yaml
-    │   └── service.yaml
-    └── rabbitmq/
-        ├── deployment.yaml
-        └── service.yaml
+    ├── namespace/
+    │   ├── data.yaml
+    │   └── metrics.yaml
+    ├── config/
+    │   └── prometheus.yaml
+    ├── storage/
+    │   ├── mongo.yaml
+    │   ├── redis.yaml
+    │   ├── mssql.yaml
+    │   ├── azurite.yaml
+    │   ├── rabbitmq.yaml
+    │   └── prometheus.yaml
+    ├── deployment/
+    │   ├── mongo.yaml
+    │   ├── redis.yaml
+    │   ├── mssql.yaml
+    │   ├── azurite.yaml
+    │   ├── rabbitmq.yaml
+    │   └── prometheus.yaml
+    └── service/
+        ├── mongo.yaml
+        ├── redis.yaml
+        ├── mssql.yaml
+        ├── azurite.yaml
+        ├── rabbitmq.yaml
+        └── prometheus.yaml
 ```
 
 ## Setup Instructions
@@ -68,6 +80,8 @@ After deploying the services, you can access them using the following connection
   - Management UI: `http://localhost:31672`
   - Username: `admin`
   - Password: `p@ssw0rd`
+- Prometheus:
+  - Web UI: `http://localhost:30090`
 
 Note: These services are exposed using NodePort services. Make sure your local Kubernetes cluster allows access to these NodePorts.
 
@@ -77,21 +91,32 @@ The `kustomization.yaml` file in the `k8s/` directory manages the deployment of 
 
 Individual service configurations can be adjusted by modifying the respective YAML files in the service-specific directories under `k8s/`.
 
+### Prometheus Configuration
+
+Prometheus is configured using a ConfigMap located at `k8s/config/prometheus.yaml`. You can modify this file to adjust scraping intervals, add new targets, or customize other Prometheus settings.
+
+## Namespaces
+
+The services are organized into two namespaces:
+
+- `data`: Contains all data services (MongoDB, Redis, MSSQL, Azurite, RabbitMQ)
+- `metrics`: Contains the Prometheus monitoring service
+
 ## Troubleshooting
 
 If you encounter any issues, please check the following:
 
 1. Ensure all pods are running:
    ```
-   kubectl get pods
+   kubectl get pods --all-namespaces
    ```
 2. Check pod logs for any errors:
    ```
-   kubectl logs <pod-name>
+   kubectl logs <pod-name> -n <namespace>
    ```
 3. Verify services are exposed correctly:
    ```
-   kubectl get services
+   kubectl get services --all-namespaces
    ```
 
 ## Contributing

@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
   - namespace/data.yaml
+  - namespace/metrics.yaml
   - storage/mongo.yaml
   - deployment/mongo.yaml
   - service/mongo.yaml
@@ -18,3 +19,7 @@ resources:
   - storage/rabbitmq.yaml
   - deployment/rabbitmq.yaml
   - service/rabbitmq.yaml
+  - config/prometheus.yaml
+  - storage/prometheus.yaml
+  - deployment/prometheus.yaml
+  - service/prometheus.yaml
